@@ -1,59 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-900 flex items-center justify-center min-h-screen">
-    <div class="w-full max-w-md bg-black text-white p-6 rounded-lg shadow-lg">
+{% extends "finance/base.html" %}
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md bg-gray-800 text-white p-6 rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold text-center mb-6">CREATE AN ACCOUNT</h1>
 
-        <form method="post" action="">
+        <form method="post" action="{% url 'register' %}">
             {% csrf_token %}
 
- 
+            <!-- Username -->
             <div class="mb-4">
                 <label for="id_username" class="block text-sm font-semibold mb-2">Username</label>
-                <input type="text" name="username" id="id_username" placeholder="ENTER YOUR NAME" required
-                       class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" name="username" id="id_username" placeholder="Enter your username" required
+                       class="w-full p-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 {% if form.username.errors %}
                     <p class="text-red-500 font-medium mt-1">{{ form.username.errors.0 }}</p>
                 {% endif %}
             </div>
 
+            <!-- Email -->
             <div class="mb-4">
                 <label for="id_email" class="block text-sm font-semibold mb-2">Email</label>
-                <input type="email" name="email" id="id_email" placeholder="ENTER YOUR EMAIL" required
-                       class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" name="email" id="id_email" placeholder="Enter your email" required
+                       class="w-full p-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 {% if form.email.errors %}
                     <p class="text-red-500 font-medium mt-1">{{ form.email.errors.0 }}</p>
                 {% endif %}
             </div>
 
+            <!-- Password -->
             <div class="mb-4">
                 <label for="id_password1" class="block text-sm font-semibold mb-2">Password</label>
-                <input type="password" name="password1" id="id_password1" placeholder="ENTER YOUR PASSWORD" required
-                       class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" name="password1" id="id_password1" placeholder="Enter your password" required
+                       class="w-full p-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 {% if form.password1.errors %}
                     <p class="text-red-500 font-medium mt-1">{{ form.password1.errors.0 }}</p>
                 {% endif %}
             </div>
 
+            <!-- Confirm Password -->
             <div class="mb-6">
                 <label for="id_password2" class="block text-sm font-semibold mb-2">Confirm Password</label>
-                <input type="password" name="password2" id="id_password2" placeholder="CONFIRM YOUR PASSWORD" required
-                       class="w-full p-3 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" name="password2" id="id_password2" placeholder="Confirm your password" required
+                       class="w-full p-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 {% if form.password2.errors %}
                     <p class="text-red-500 font-medium mt-1">{{ form.password2.errors.0 }}</p>
                 {% endif %}
             </div>
 
-            <button type="submit"
-                class="w-full bg-green-600  text-white py-2 rounded-lg font-semibold">
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-indigo-500 hover:bg-indigo-600 py-2 rounded-lg font-semibold">
                 Register
             </button>
-        </form>     
+        </form>
     </div>
-</body>
-</html>
+</div>
+{% endblock content %}
