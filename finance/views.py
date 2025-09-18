@@ -15,8 +15,13 @@ class registerView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('')
+            return redirect('dashboard')
        
+class dashboardView(View):
+     def get(self, request, *args, **kwargs):
+        return render(request, 'finance/dashboard.html')
+    
+
 
 
 

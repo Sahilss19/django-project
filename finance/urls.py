@@ -1,11 +1,12 @@
 from django.urls import path
 # from finance.views import home , HomeView
-from finance.views import registerView
+from finance.views import registerView , dashboardView
 
 urlpatterns = [
     # path('home/' , home , name = "home"),
     # path('ghar/' , HomeView.as_view () , name = 'ghar') 
 
-    path('register/' , registerView.as_view(), name = "register")
+    path('register/' , registerView.as_view(), name = "register"),
+      path('' , dashboardView.as_view(), name = "dashboard")
 
 ]
