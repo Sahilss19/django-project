@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from finance.forms import RegisterForm
 from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin 
+# kisi bhi class base view ko yeh restrict krta h register login k bad hi dikhega 
 
 
 class registerView(View):
@@ -17,7 +19,7 @@ class registerView(View):
             login(request, user)
             return redirect('dashboard')
        
-class dashboardView(View):
+class dashboardView(LoginRequiredMixin , View):
      def get(self, request, *args, **kwargs):
         return render(request, 'finance/dashboard.html')
     
